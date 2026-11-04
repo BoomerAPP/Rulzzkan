@@ -1,0 +1,1 @@
+{"name":"rulzzgtps-v2","private":true,"type":"module","scripts":{"bootstrap-admin":"node bootstrap-admin.mjs"},"dependencies":{"@supabase/supabase-js":"^2.57.0"}}

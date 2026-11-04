@@ -1,0 +1,641 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#09090f"><meta name="description" content="RulzzGTPS Promoter Hub — jadwal BA Growtopia, live gaming, dan pemesanan promoter.">
+<title>RulzzGTPS — Promoter Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Archivo+Black&family=Space+Mono:wght@400;700&family=Rajdhani:wght@500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="./config.js"></script>
+<style>
+:root{--bg:#071426;--bg2:#0b1d33;--panel:rgba(17,39,65,.78);--panel2:#102944;--line:#294766;--text:#eaf4ff;--muted:#91a9c2;--blue:#45a8ff;--cyan:#63d8ee;--green:#4bd6a0;--red:#ff647c;--shadow:12px 14px 32px #020a14a8,-7px -7px 20px #18365455;--inset:inset 4px 4px 10px #06101f,inset -3px -3px 9px #1b3c5d}
+*{box-sizing:border-box}body{margin:0;color:var(--text);background:radial-gradient(ellipse at 80% -10%,#174c7c 0,transparent 36%),radial-gradient(ellipse at 0 80%,#0b3553 0,transparent 32%),linear-gradient(145deg,#050d19,var(--bg) 55%,#081a2d);font-family:'Manrope',sans-serif;min-height:100vh}button,input,select,textarea{font:inherit}button{cursor:pointer}.top{padding:9px 18px;text-align:center;background:#06101de8;border-bottom:1px solid #24415f;color:#b8cde1;font-size:11px;letter-spacing:.2px}.top a{color:var(--cyan);font-weight:800;text-decoration:none}.shell{display:flex;gap:18px;max-width:1480px;margin:auto;padding:18px}.side{width:250px;flex:none;height:calc(100vh - 36px);position:sticky;top:18px;padding:18px;border:1px solid #6e9bc333;border-radius:24px;background:linear-gradient(145deg,#122b46dd,#0b1c30dd);backdrop-filter:blur(20px);box-shadow:var(--shadow);display:flex;flex-direction:column;z-index:5}.brand{display:flex;align-items:center;gap:12px;padding:5px 4px 24px}.logo{width:44px;height:44px;border-radius:15px;display:grid;place-items:center;font:700 22px 'Space Grotesk';color:white;background:linear-gradient(145deg,#65c8ff,#1769bd 65%,#0d3970);box-shadow:inset 2px 2px 5px #ffffff80,5px 7px 15px #020b19}.brand strong{font:700 17px 'Space Grotesk';display:block}.brand small{font-size:9px;letter-spacing:1.6px;color:#8ca9c4}.navlabel{font-size:9px;font-weight:800;letter-spacing:1.7px;color:#718da8;padding:10px}.nav{display:grid;gap:6px}.nav button{border:1px solid transparent;border-radius:13px;background:transparent;color:#a9bfd4;text-align:left;padding:12px;display:flex;gap:11px;align-items:center;font-size:12px;font-weight:750;transition:.2s}.nav button:hover{background:#173653;color:white;border-color:#315779}.nav button.active{color:#fff;background:linear-gradient(115deg,#176fc1,#168eb7);box-shadow:0 7px 18px #0064b955,inset 1px 1px 2px #ffffff55}.ico{width:19px;text-align:center;font-size:16px}.sidebox{margin-top:auto;padding:14px;border-radius:17px;background:linear-gradient(145deg,#173b5a,#0c2138);border:1px solid #315577}.sidebox b{font-size:11px}.sidebox p{font-size:10px;line-height:1.5;color:var(--muted)}.sidebox a{font-size:10px;color:var(--cyan);font-weight:800;text-decoration:none}.main{min-width:0;flex:1}.mobilehead{display:none;justify-content:space-between;align-items:center;padding:12px 14px;margin-bottom:12px;border:1px solid #315577;border-radius:17px;background:#102944dd}.hamb{border:1px solid #315577;border-radius:11px;padding:8px 12px;background:#173653;color:white}.page{display:none;animation:rise .25s ease}.page.active{display:block}@keyframes rise{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}.hero{position:relative;overflow:hidden;padding:27px;border-radius:25px;border:1px solid #70baff35;background:linear-gradient(115deg,#123d66,#126a9b 58%,#153c63);box-shadow:var(--shadow)}.hero:before,.hero:after{content:'';position:absolute;border:1px solid #a5e8ff35;border-radius:50%;width:260px;height:260px;right:-55px;top:-155px}.hero:after{width:180px;height:180px;right:35px;top:-110px}.eyebrow{font-size:10px;color:#aeeaff;letter-spacing:1.7px;text-transform:uppercase;font-weight:800}.hero h1{font:700 clamp(29px,4vw,46px)/1.06 'Space Grotesk';letter-spacing:-1.5px;margin:12px 0}.hero p{max-width:570px;color:#d3eaff;font-size:13px;line-height:1.6;margin:0}.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:19px}.btn{border:0;border-radius:12px;padding:11px 15px;font-size:11px;font-weight:850;transition:.18s}.btn:hover{transform:translateY(-2px);filter:brightness(1.08)}.primary{color:#061426;background:linear-gradient(145deg,#a2e8ff,#48b9ef);box-shadow:0 6px 15px #009de544,inset 1px 1px 2px #fff}.secondary{color:#dff4ff;background:#ffffff12;border:1px solid #9ddcff55}.danger{color:#fff;background:linear-gradient(145deg,#ff7188,#c93658)}.quiet{color:#c4d9ed;background:#173653;border:1px solid #315577}.full{width:100%}.sectionhead{display:flex;justify-content:space-between;align-items:end;gap:10px;margin:22px 2px 12px}.sectionhead h2{font:700 18px 'Space Grotesk';margin:0}.sectionhead p{font-size:11px;color:var(--muted);margin:5px 0 0}.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:12px}.card{grid-column:span 4;padding:17px;border:1px solid #42648666;border-radius:19px;background:linear-gradient(145deg,#142e49dd,#0c2036dd);backdrop-filter:blur(16px);box-shadow:var(--shadow)}.card.wide{grid-column:span 8}.card.all{grid-column:1/-1}.card h3{font:700 13px 'Space Grotesk';margin:0 0 7px}.card p{font-size:11px;line-height:1.55;color:var(--muted);margin:0}.big{font:700 24px 'Space Grotesk';margin-top:12px;color:#80d9ff}.status{font-size:10px;font-weight:900;padding:7px 10px;border-radius:30px;color:#92ffd5;background:#164b43;border:1px solid #327d6d}.status.closed{color:#ffb1bf;background:#51253a;border-color:#8a3b54}.pill{font-size:9px;font-weight:850;padding:6px 9px;border-radius:30px;background:#183b5c;color:#9ddcff;border:1px solid #315d80;white-space:nowrap}.rowitem{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:12px 0;border-bottom:1px solid #29435d;font-size:11px}.rowitem:last-child{border:0}.rowitem b{display:block;font-size:12px}.rowitem small{color:var(--muted);display:block;margin-top:4px}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field{display:grid;gap:6px}.field.full{grid-column:1/-1}.field label{font-size:10px;color:#b5cbe0;font-weight:800}.field input,.field select,.field textarea{width:100%;padding:11px 12px;border:1px solid #315577;border-radius:11px;background:#091a2c;color:#eff8ff;outline:none;box-shadow:var(--inset)}.field input:focus,.field select:focus,.field textarea:focus{border-color:#58bfff;box-shadow:0 0 0 3px #40aaff22,var(--inset)}.field textarea{min-height:75px;resize:vertical}.hint{font-size:10px;color:var(--muted);line-height:1.5}.notice{padding:13px;border-radius:13px;background:#382f1c;border:1px solid #75603a;color:#f6dba3;font-size:10px;line-height:1.55}.steps{display:grid;gap:8px}.step{display:flex;gap:10px;align-items:flex-start;padding:10px;border-radius:12px;background:#0b2035;border:1px solid #294968;font-size:10px;color:#c6d9eb}.step b{color:#83d8ff}.payoption{display:flex;align-items:center;gap:9px;padding:10px;border:1px solid #315577;border-radius:12px;background:#0b2035;cursor:pointer}.payoption:has(input:checked){border-color:#56bfff;background:#123653}.payoption input{accent-color:#4cbaff}.payoption span{font-size:11px;font-weight:800}.preview{width:min(220px,100%);border-radius:12px;border:1px solid #477092;display:block}.empty{text-align:center;padding:22px;color:var(--muted);font-size:11px}.hidden{display:none!important}.toast{position:fixed;bottom:20px;left:50%;transform:translate(-50%,20px);opacity:0;transition:.2s;z-index:50;padding:12px 16px;background:#dff5ff;color:#071426;border-radius:12px;font-size:11px;font-weight:800;box-shadow:0 8px 25px #0008}.toast.show{opacity:1;transform:translate(-50%,0)}.overlay{display:none;position:fixed;inset:0;z-index:30;background:#020914c9;backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:16px}.overlay.show{display:flex}.modal{width:min(410px,100%);padding:22px;border-radius:22px;background:linear-gradient(145deg,#153552,#0a1b2d);border:1px solid #477092;box-shadow:var(--shadow)}.modal h2{font:700 20px 'Space Grotesk';margin:0 0 6px}.modal p{font-size:11px;color:var(--muted);line-height:1.5}.modal .field{margin:13px 0}.footer{text-align:center;padding:22px;color:#718da8;font-size:10px}.shade{display:none}
+@media(max-width:900px){.shell{padding:12px}.side{position:fixed;left:10px;top:10px;bottom:10px;height:auto;transform:translateX(-120%);transition:.25s;width:min(275px,85vw);z-index:25}.side.open{transform:translateX(0)}.shade.show{display:block;position:fixed;inset:0;background:#020914b8;z-index:20}.mobilehead{display:flex}.card{grid-column:span 6}.card.wide{grid-column:span 12}}
+@media(max-width:600px){.shell{padding:10px}.hero{padding:22px}.hero h1{font-size:33px}.card,.card.wide{grid-column:1/-1}.formgrid{grid-template-columns:1fr}.field.full{grid-column:auto}.sectionhead h2{font-size:16px}}
+
+/* RULZZGTPS ART DIRECTION: AFTER HOURS / editorial gaming club */
+:root{--bg:#171817;--bg2:#20211f;--panel:rgba(37,39,35,.88);--panel2:#292b26;--line:#49483e;--text:#f3efe5;--muted:#aaa99c;--blue:#e34c38;--cyan:#f0a28e;--green:#b6c88a;--red:#ed5a45;--shadow:10px 12px 28px #080908a8,-4px -4px 14px #ffffff08;--inset:inset 3px 3px 8px #10110f,inset -2px -2px 7px #ffffff08}
+body{background:radial-gradient(ellipse at 95% 0%,#54302755,transparent 32%),radial-gradient(ellipse at 0% 80%,#34372b55,transparent 30%),#171817;color:var(--text)}
+.top{background:#111210;border-color:#393a32;color:#c5c1b4}.top a{color:#f08b75}
+.side{background:linear-gradient(155deg,#292b26f2,#1c1e1bfa);border-color:#555448;border-radius:18px;box-shadow:12px 14px 30px #080908,inset 1px 1px 0 #ffffff12}
+.logo{border-radius:12px;background:linear-gradient(145deg,#f0785e,#a52f27 70%,#64231e);font-family:'Archivo Black';box-shadow:inset 2px 2px 4px #ffffff65,5px 7px 14px #080908}
+.brand strong,.sectionhead h2,.card h3,.modal h2{font-family:'Manrope',sans-serif;letter-spacing:-.5px}
+.brand small,.navlabel,.eyebrow{font-family:'Space Mono',monospace;letter-spacing:1.2px}
+.nav button{color:#c1bfb2;border-radius:10px}.nav button:hover{background:#37382f;border-color:#555448}.nav button.active{background:linear-gradient(110deg,#d94c37,#9d3027);box-shadow:0 7px 18px #8b302733,inset 1px 1px 0 #ffffff44}
+.sidebox{background:linear-gradient(145deg,#35372f,#22241f);border-color:#555448}.sidebox a{color:#f08b75}
+.hero{background:linear-gradient(112deg,#292b26,#34352c 58%,#512c25);border-color:#655247;border-radius:18px;box-shadow:var(--shadow)}.hero:before,.hero:after{border-color:#f0a28e30}.eyebrow{color:#f0a28e}.hero h1{font-family:'Archivo Black',sans-serif;font-weight:400;letter-spacing:-1.3px}.hero p{color:#d4d0c4}
+.primary{color:#fff5ed;background:linear-gradient(145deg,#ed7058,#b83d2e);box-shadow:0 6px 15px #8f302b44,inset 1px 1px 2px #ffffff65}.secondary{color:#f3e9df;background:#ffffff0b;border-color:#8b695d}.quiet{color:#e0dbce;background:#34362e;border-color:#5b5b4e}.danger{background:linear-gradient(145deg,#e56c5b,#9c3028)}
+.card{background:linear-gradient(145deg,#292b26ed,#20221fee);border-color:#4d4d42;border-radius:15px;box-shadow:8px 10px 22px #08090899,-2px -2px 8px #ffffff06}.big{color:#f08b75}.status{color:#d7e6b3;background:#303d2b;border-color:#64764c}.status.closed{color:#ffb9aa;background:#512c26;border-color:#8b493b}.pill{background:#37372e;color:#e6b1a2;border-color:#685247}
+.field label{color:#d4cfc1}.field input,.field select,.field textarea{background:#191b18;border-color:#555448;color:#f4efe4;box-shadow:inset 3px 3px 7px #10110f,inset -2px -2px 5px #ffffff08}.field input:focus,.field select:focus,.field textarea:focus{border-color:#e17a63;box-shadow:0 0 0 3px #e17a6322,var(--inset)}
+.notice{background:#3b3025;border-color:#795844;color:#f4d4a9}.step{background:#22241f;border-color:#45463b;color:#d5d0c3}.step b{color:#f08b75}.payoption{background:#22241f;border-color:#4b4c40}.payoption:has(input:checked){border-color:#e17a63;background:#3b2c26}.payoption input{accent-color:#e15a43}
+.mobilehead{background:#242620;border-color:#4b4c40}.hamb{background:#34362e;border-color:#5b5b4e}.modal{background:linear-gradient(145deg,#30322b,#1d1f1b);border-color:#66584d}.footer{color:#858477}
+
+
+/* RULZZGTPS / REDLINE CLUB */
+:root{--bg:#090a0e;--bg2:#11131a;--panel:rgba(22,23,31,.91);--panel2:#191b24;--line:#39333e;--text:#f5f1f0;--muted:#a6a0a8;--blue:#ff334b;--cyan:#ff8a93;--green:#91e3b0;--red:#ff4058;--shadow:12px 16px 32px #000b,-4px -4px 16px #ffffff08;--inset:inset 3px 3px 8px #05060a,inset -2px -2px 7px #ffffff09}
+body{background:radial-gradient(ellipse at 82% 4%,#6b142744,transparent 28%),radial-gradient(ellipse at 4% 82%,#32132655,transparent 32%),linear-gradient(145deg,#08090d,#11121a 55%,#08090d)}
+.top{background:#08090deF;border-color:#3c202b}.top a{color:#ff687a}
+.side{background:linear-gradient(155deg,#1c1c25f5,#101117fa);border-color:#673342;border-radius:20px;box-shadow:14px 18px 38px #000b,inset 1px 1px 0 #ffffff12}
+.logo{background:linear-gradient(145deg,#ff6878,#c20d32 68%,#570d23);box-shadow:inset 2px 2px 4px #ffffff75,5px 7px 15px #050509}
+.brand small{color:#c18b98}.navlabel{color:#9e7d88}.nav button{color:#c8c0c5}.nav button:hover{background:#34202a;border-color:#6b3445}.nav button.active{background:linear-gradient(110deg,#ec2948,#94152f);box-shadow:0 8px 22px #c51c3e55,inset 1px 1px 1px #ffffff55}
+.sidebox{background:linear-gradient(145deg,#30202a,#17151c);border-color:#683345}.sidebox a{color:#ff7787}
+.hero{background:linear-gradient(112deg,#20151e,#2a1723 56%,#4c1427);border-color:#743246;border-radius:22px}.hero:before,.hero:after{border-color:#ff7a9238}.eyebrow{color:#ff9aa7}.hero h1{font-family:'Archivo Black',sans-serif;letter-spacing:-1.4px}.hero p{color:#e1d2d8}
+.primary{color:#fff;background:linear-gradient(145deg,#ff6878,#c51b3c 72%,#81152d);box-shadow:0 7px 18px #b9163b55,inset 1px 1px 2px #ffffff75}.secondary{color:#ffe9ed;background:#ffffff0b;border-color:#9e5367}.quiet{color:#e8dce0;background:#28232b;border-color:#57414b}.danger{background:linear-gradient(145deg,#ff6478,#9d1732)}
+.card{background:linear-gradient(145deg,#20212aef,#15161dee);border-color:#4c3944;border-radius:18px;box-shadow:9px 12px 26px #0009,-2px -2px 8px #ffffff08}.big{color:#ff7a8b}.status{color:#b5f3cc;background:#173327;border-color:#376a4e}.status.closed{color:#ffb6c0;background:#481b2a;border-color:#91394f}.pill{background:#32202a;color:#ffabb7;border-color:#714050}
+.field label{color:#e0d4da}.field input,.field select,.field textarea{background:#101117;border-color:#51404a;color:#fff5f6;box-shadow:inset 3px 3px 7px #08090d,inset -2px -2px 5px #ffffff08}.field input:focus,.field select:focus,.field textarea:focus{border-color:#ff6078;box-shadow:0 0 0 3px #ff405822,var(--inset)}
+.notice{background:#35232a;border-color:#74414c;color:#f5d2d7}.step{background:#191a22;border-color:#40333c;color:#ded3d8}.step b{color:#ff788a}.payoption{background:#171820;border-color:#51404a}.payoption:has(input:checked){border-color:#ff6078;background:#321d29}.payoption input{accent-color:#ff4058}
+.modal{background:linear-gradient(145deg,#29202a,#101117);border-color:#74414f}.mobilehead{background:#191820dd;border-color:#593746}.hamb{background:#2b1c26;border-color:#714052}.toast{background:#fff0f2;color:#3b0b18}
+.hero-art{position:absolute;right:20px;bottom:-12px;width:min(36%,260px);opacity:.9;pointer-events:none;filter:drop-shadow(0 12px 22px #0009)}.hero-content{position:relative;z-index:1;max-width:68%}.sectionhead h2{letter-spacing:-.4px}.buy-submit:disabled{opacity:.42;filter:grayscale(.55);cursor:not-allowed;transform:none;box-shadow:none}.order-code{font:700 15px 'Space Mono',monospace;color:#ff8b9b;letter-spacing:.5px}.order-result{margin-top:14px;padding:16px;border:1px solid #62404d;border-radius:16px;background:linear-gradient(145deg,#211a23,#14151b);display:grid;gap:9px}.order-result .rowitem{padding:8px 0}
+@media(max-width:600px){.hero-content{max-width:100%}.hero-art{opacity:.16;width:58%;right:-10px}.hero p{max-width:90%}}
+
+/* Weekly schedule + unified royal-red visual system */
+.day-group{margin:0 0 22px}.day-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:15px 4px 10px;border-bottom:1px solid #713b4b55}.day-kicker{font:800 9px 'Space Mono',monospace;letter-spacing:1.8px;color:#d88aa0}.day-heading h3{font:800 21px 'Rajdhani',sans-serif;letter-spacing:.5px;margin:2px 0 0;color:#fff}.day-count{font-size:10px;color:#c9aab4;background:#38202b;border:1px solid #754255;border-radius:30px;padding:7px 10px}.schedule-card{display:flex;justify-content:space-between;gap:15px;margin-top:11px;padding:17px;border-radius:18px;border:1px solid #70405288;background:linear-gradient(135deg,#241923,#17151b 65%,#251922);box-shadow:0 12px 26px #0005,inset 1px 1px 0 #ffffff0a;position:relative;overflow:hidden}.schedule-card:before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(#ff9aab,#b62e52)}.schedule-main{min-width:0;flex:1}.schedule-label{font:800 9px 'Space Mono',monospace;letter-spacing:1.7px;color:#df8ba5}.schedule-card h4{font:800 24px 'Rajdhani',sans-serif;letter-spacing:.3px;color:#fff;margin:3px 0 9px}.schedule-meta{display:flex;gap:7px;flex-wrap:wrap}.time-chip{font-size:9px;font-weight:800;letter-spacing:.3px;color:#f3dce4;background:#392431;border:1px solid #6b3a4d;border-radius:8px;padding:7px 9px}.reach-line{font-size:10px;color:#bdaab2;margin-top:10px}.reach-line b{color:#f2d7e0}.schedule-side{display:flex;flex-direction:column;align-items:flex-end;gap:8px;flex:none}.schedule-side small{font:10px 'Space Mono',monospace;color:#98838d}.schedule-status{font-size:9px;font-weight:900;letter-spacing:1px;padding:7px 11px;border-radius:30px}.schedule-status.open{color:#a7e4c2;background:#18382d;border:1px solid #386c51}.schedule-status.closed{color:#ffb1bd;background:#48212e;border:1px solid #814052}.reward-box{margin-top:13px;padding:11px;border-radius:12px;background:#17151a;border:1px solid #563344}.reward-title{font:800 9px 'Space Mono',monospace;letter-spacing:1.3px;color:#e7a1b4;margin-bottom:8px}.reward-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}.reward-item{display:grid;gap:4px;padding:8px;border-radius:9px;background:#2b2028}.reward-item span{font-size:9px;color:#d9b9c5}.reward-item b{font-size:11px;color:#fff;overflow-wrap:anywhere}.count-line{font-size:10px;color:#d99aab;margin-top:11px}.day-empty{margin-top:10px;padding:17px;border:1px dashed #684354;border-radius:15px;background:linear-gradient(120deg,#211821,#19171c);display:grid;gap:5px}.day-empty>span{color:#d9829e;font-size:17px}.day-empty b{font:700 13px 'Rajdhani',sans-serif;color:#f5e9ee}.day-empty small{font-size:10px;line-height:1.5;color:#a9959f}.adminTab .card{background:linear-gradient(145deg,#2b2028,#1b191e);border-color:#664050}.adminTab .nav button.active{background:linear-gradient(120deg,#8e2949,#d34d6c);box-shadow:0 7px 18px #a52c4b44}.adminTab .btn.primary,.btn.primary{background:linear-gradient(145deg,#ffd1dc,#d85b7b);color:#28131b;box-shadow:0 6px 16px #b52e5544,inset 1px 1px 2px #fff8}.field input,.field select,.field textarea{background:#19171c;border-color:#61404f;color:#fff}.field input:focus,.field select:focus,.field textarea:focus{border-color:#d87591;box-shadow:0 0 0 3px #d8759122,inset 3px 3px 8px #100e12}.card{border-color:#60405066}.pill{background:#38232e;color:#e9b1c1;border-color:#714356}.status{color:#b9e7c9;background:#1c382d;border-color:#426b51}.status.closed{color:#ffb1bf;background:#48212e;border-color:#814052}
+@media(max-width:600px){.schedule-card{padding:14px;gap:8px}.schedule-card h4{font-size:22px}.schedule-side small{font-size:8px}.reward-grid{grid-template-columns:1fr}.reward-item{grid-template-columns:70px 1fr;align-items:center}.day-heading h3{font-size:19px}}
+
+</style>
+<style>
+:root{--bg:#08090f;--bg2:#11121b;--panel:#171821;--panel2:#1c1d28;--line:#49313e;--text:#f7f2f4;--muted:#aaa1ad;--blue:#ff334f;--cyan:#ff8798;--green:#72e0a2;--red:#ff334f;--shadow:0 18px 45px #000b,0 0 0 1px #ffffff08 inset;--inset:inset 4px 4px 10px #08080d,inset -3px -3px 9px #ffffff0a}
+body{background:radial-gradient(ellipse at 75% 5%,#5e153044,transparent 32%),radial-gradient(ellipse at 0 85%,#33132666,transparent 34%),linear-gradient(135deg,#08090e,#111019 55%,#08090e);font-family:'Manrope',sans-serif}
+.top{height:54px;display:flex;align-items:center;justify-content:center;gap:20px;background:#09090ff2;border-bottom:1px solid #3b202d;color:#bcb3bd;font-size:10px}.top-live{color:#f7dce2;font-weight:900;letter-spacing:1px}.top-live i{display:inline-block;width:7px;height:7px;border-radius:50%;background:#31e18a;box-shadow:0 0 10px #31e18a;margin-right:7px}.top a{color:#fff;text-decoration:none;background:#17131d;border:1px solid #49303d;border-radius:30px;padding:8px 14px}.top a b{color:#ff899b;margin-left:8px}
+.shell{max-width:1600px;gap:0;padding:0;margin:0 auto}.side{width:224px;height:calc(100vh - 54px);top:54px;left:auto;border-radius:0 22px 22px 0;padding:22px 17px 16px;background:linear-gradient(180deg,#17131d 0%,#111019 58%,#0a0b11 100%);border:0;border-right:1px solid #64293e;box-shadow:10px 0 34px #0008;overflow-y:auto}.brand{padding:5px 4px 25px;gap:10px}.logo{width:48px;height:48px;border-radius:16px;color:#fff1c5;font-size:26px;background:linear-gradient(145deg,#ffdc8a,#d43a50 48%,#4e142b);box-shadow:0 0 24px #f23b5b55,inset 1px 1px 4px #fff9}.brand strong{font:800 18px 'Rajdhani',sans-serif;letter-spacing:-.2px}.brand small{color:#ff788e;font:700 9px 'Space Mono',monospace}.navlabel{color:#8d7d8d;font-size:9px}.nav{gap:7px}.nav button{padding:12px 11px;border-radius:13px;color:#d4cbd4;font-size:12px}.nav button.active{background:linear-gradient(105deg,#e72c4b,#84152f);border-color:#ff7287;box-shadow:0 7px 20px #d21f4855,inset 1px 1px 2px #ffffff55}.nav button:hover{background:#321d29;border-color:#713448}.sidebox{margin-top:28px;min-height:210px;padding:130px 13px 14px;border-radius:19px;background:linear-gradient(180deg,transparent 0%,#15121beF 54%),url('./assets/mascot-card.png') center top/cover no-repeat,#21141e;border:1px solid #a33b56;box-shadow:0 10px 28px #0009}.sidebox b{font:800 15px 'Rajdhani',sans-serif}.sidebox p{font-size:10px;color:#c8bec8}.sidebox a{display:inline-flex;padding:8px 12px;border-radius:30px;background:linear-gradient(135deg,#f46a7c,#a71b39);color:white}
+.main{padding:0 24px 24px;max-width:calc(100% - 224px)}.mobilehead{display:none}.hero{min-height:330px;margin:0 -24px 24px;padding:50px 42px;border-radius:0 0 24px 24px;border:0;border-bottom:2px solid #a42b4b;background:linear-gradient(90deg,#100e18 0%,#1b101b 42%,#32101f 100%);box-shadow:0 16px 34px #0009;isolation:isolate}.hero:before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,#100e18 0%,#100e18ee 35%,#100e1840 67%,#100e1800 100%),url('./assets/mascot-hero.png') right center/auto 125% no-repeat;z-index:-1;border-radius:inherit}.hero:after{content:'';position:absolute;left:-5%;right:-5%;bottom:-24px;height:34px;background:linear-gradient(90deg,#f42e50,#541329 20%,#f34b68 50%,#4b1025 78%,#f22d4b);clip-path:polygon(0 20%,8% 55%,15% 0,23% 65%,32% 25%,44% 80%,55% 10%,66% 70%,78% 18%,89% 75%,100% 15%,100% 55%,88% 100%,76% 45%,66% 100%,54% 45%,43% 100%,32% 50%,21% 100%,10% 50%,0 100%);filter:drop-shadow(0 0 12px #f22d4b);z-index:2}.hero-content{max-width:58%;z-index:3}.eyebrow{font:700 10px 'Space Mono',monospace;color:#ff8c9e;letter-spacing:2px}.hero h1{font:800 clamp(34px,4vw,56px)/.98 'Rajdhani',sans-serif;letter-spacing:-1.3px;text-transform:none;text-shadow:0 4px 20px #000}.hero h1 em{color:#ff536e;font-style:normal}.hero p{max-width:440px;color:#e4d7df;font-size:13px}.hero-art{display:none}.hero-lines{position:absolute;inset:0;width:100%;height:100%;opacity:.24;pointer-events:none;z-index:1}.sectionhead{margin-top:22px}.sectionhead h2{font:800 21px 'Rajdhani',sans-serif;letter-spacing:-.3px}.card{background:linear-gradient(145deg,#1c1c27f2,#11121af5);border:1px solid #493442;border-radius:18px;box-shadow:0 12px 28px #0008,inset 1px 1px 0 #ffffff0b}.card h3{font:800 16px 'Rajdhani',sans-serif}.big{font:800 28px 'Rajdhani',sans-serif;color:#ff647c}.status{background:#173326;color:#9af0bd;border-color:#3b7656}.pill{background:#301d29;color:#ff9dad;border-color:#774052}.btn{font:800 12px 'Manrope',sans-serif;border-radius:13px}.primary{background:linear-gradient(145deg,#ff687c,#d41f43 68%,#81132e);box-shadow:0 8px 20px #d21d4655,inset 1px 1px 2px #fff8}.secondary{background:#191720;border-color:#754052;color:#ffe9ee}.quiet{background:#26212b;border-color:#5b3d4a;color:#f0e5ea}.field input,.field select,.field textarea{background:#0d0e15;border-color:#51404b;color:#fff4f6}.field label{color:#e7dbe1}.field input:focus,.field select:focus,.field textarea:focus{border-color:#ff6078;box-shadow:0 0 0 3px #ff405822,var(--inset)}.notice{background:#35232b;border-color:#8b4b3f;color:#f4d5b2}.step{background:#14151d;border-color:#41313b;color:#e3d8de}.step b{color:#ff778d}.payoption{background:#12131b;border-color:#51404b}.payoption:has(input:checked){border-color:#ff536e;background:#321a27;box-shadow:0 0 18px #ff405822}.payoption input{accent-color:#ff4058}.modal{background:linear-gradient(145deg,#29202a,#101117);border-color:#74414f}.order-result{border-color:#704052;background:linear-gradient(145deg,#211722,#11121a)}.order-code{color:#ff8498}.footer{padding:28px 10px;color:#8d8290;border-top:1px solid #3d2532}.footer b{color:#ff899b}.footer:after{content:' ✦ Crafted with care';color:#716775}
+/* Visual ornament details */
+.hero .actions .btn{padding:13px 18px}.card,.hero,.sidebox,.modal{backdrop-filter:blur(18px)}.nav button.active span{color:white}.nav button:focus-visible,.btn:focus-visible{outline:2px solid #ff9aaa;outline-offset:3px}
+@media(max-width:900px){.top{height:auto;min-height:48px;gap:8px;flex-wrap:wrap;padding:8px}.top>span:nth-child(2){display:none}.shell{padding:0}.side{left:10px;top:10px;bottom:10px;height:auto;width:min(275px,85vw);border-radius:20px;transform:translateX(-120%);z-index:25}.side.open{transform:translateX(0)}.main{max-width:none;padding:0 14px 18px}.mobilehead{display:flex;margin:10px 0 12px;background:#17141e;border:1px solid #543243}.hero{margin:0 -14px 18px;min-height:300px;padding:36px 22px;border-radius:0 0 20px 20px}.hero:before{background:linear-gradient(90deg,#100e18 0%,#100e18ed 40%,#100e1855 100%),url('./assets/mascot-hero.png') right center/auto 100% no-repeat}.hero-content{max-width:70%}.hero h1{font-size:clamp(31px,8vw,45px)}.card{grid-column:span 6}.card.wide{grid-column:span 12}}
+@media(max-width:600px){.hero{min-height:265px;padding:28px 18px}.hero:before{background:linear-gradient(90deg,#100e18 0%,#100e18ef 52%,#100e1870 100%),url('./assets/mascot-hero.png') right center/auto 90% no-repeat}.hero-content{max-width:88%}.hero h1{font-size:35px}.hero p{font-size:11px;max-width:92%}.card,.card.wide{grid-column:1/-1}.formgrid{grid-template-columns:1fr}.field.full{grid-column:auto}.sectionhead h2{font-size:19px}.top a{padding:7px 10px}.sidebox{margin-top:22px}}
+
+.buyer-slot-list{display:grid;gap:10px;max-height:380px;overflow-y:auto;padding:2px}
+.buyer-slot-card{display:flex;justify-content:space-between;gap:12px;padding:14px;border-radius:14px;border:1px solid #70405288;background:linear-gradient(135deg,#241923,#17151b 65%,#251922);cursor:pointer;transition:.18s;position:relative;overflow:hidden}
+.buyer-slot-card:before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(#ff9aab,#b62e52)}
+.buyer-slot-card:hover{border-color:#ff7287;transform:translateY(-1px);box-shadow:0 8px 20px #0006}
+.buyer-slot-card.selected{border-color:#ff536e;background:linear-gradient(135deg,#3a1f2c,#231820 65%,#2e1a24);box-shadow:0 0 0 2px #ff405855,0 10px 24px #0007}
+.buyer-slot-card.selected:after{content:'✓ DIPILIH';position:absolute;top:10px;right:12px;font:800 9px 'Space Mono',monospace;letter-spacing:1px;color:#ff9aab;background:#481828;border:1px solid #914055;padding:4px 8px;border-radius:20px}
+.buyer-slot-main{min-width:0;flex:1}
+.buyer-slot-label{font:800 9px 'Space Mono',monospace;letter-spacing:1.5px;color:#df8ba5}
+.buyer-slot-card h4{font:800 18px 'Rajdhani',sans-serif;margin:2px 0 8px;color:#fff}
+.buyer-slot-meta{display:flex;gap:6px;flex-wrap:wrap}
+.buyer-slot-meta span{font-size:9px;font-weight:800;color:#f3dce4;background:#392431;border:1px solid #6b3a4d;border-radius:8px;padding:6px 8px}
+.buyer-slot-rewards{margin-top:10px;display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.buyer-slot-rewards div{padding:7px;border-radius:8px;background:#2b2028;font-size:10px}
+.buyer-slot-rewards span{display:block;color:#d9b9c5;font-size:8px;margin-bottom:2px}
+.buyer-slot-rewards b{color:#fff;font-size:11px}
+.buyer-slot-side{display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex:none;padding-top:2px}
+.buyer-slot-side .schedule-status{font-size:9px;font-weight:900;letter-spacing:1px;padding:6px 10px;border-radius:30px}
+@media(max-width:600px){.buyer-slot-rewards{grid-template-columns:1fr}.buyer-slot-card h4{font-size:16px}}
+
+.buyer-day-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+.buyer-day-col{border:1px solid #5a3a48;border-radius:16px;background:linear-gradient(160deg,#1c171d,#14131a);overflow:hidden;min-height:120px}
+.buyer-day-head{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;border-bottom:1px solid #5a3a4866;background:#221920}
+.buyer-day-name{font:800 15px 'Rajdhani',sans-serif;color:#fff;letter-spacing:.3px}
+.buyer-day-count{font:800 9px 'Space Mono',monospace;letter-spacing:1px;color:#e7a1b4;background:#38202b;border:1px solid #754255;border-radius:20px;padding:5px 9px}
+.buyer-day-body{padding:10px;display:grid;gap:8px}
+.buyer-day-empty{margin:0;padding:14px;border-style:dashed}
+.buyer-slot-list{max-height:none;overflow:visible}
+@media(max-width:900px){.buyer-day-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.buyer-day-grid{grid-template-columns:1fr}}
+
+.buyer-day-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
+.buyer-day-col{border:1px solid #5a3a48;border-radius:14px;background:#17151b;overflow:hidden;text-align:left;width:100%;color:inherit;font:inherit;padding:0;cursor:default}
+.buyer-day-col.empty-day{cursor:pointer;transition:.15s}
+.buyer-day-col.empty-day:hover,.buyer-day-col.empty-day.selected{border-color:#ff7287;background:#2a1a22}
+.buyer-day-col.empty-day.selected{box-shadow:0 0 0 2px #ff405855}
+.buyer-day-head{display:flex;justify-content:space-between;align-items:center;padding:10px 12px;border-bottom:1px solid #5a3a4866;background:#221920}
+.buyer-day-name{font:800 14px 'Rajdhani',sans-serif;color:#fff}
+.buyer-day-count{font:800 9px 'Space Mono',monospace;color:#e7a1b4;background:#38202b;border-radius:12px;padding:3px 8px}
+.buyer-day-body{padding:8px;display:grid;gap:6px}
+.empty-tap{padding:16px 8px;text-align:center;font-size:11px;color:#c9aab4;line-height:1.4}
+.empty-tap small{color:#98838d}
+.buyer-slot-card{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 12px;border-radius:10px;border:1px solid #70405288;background:#241923;cursor:pointer;text-align:left;width:100%;color:inherit;font:inherit;transition:.15s}
+.buyer-slot-card:hover{border-color:#ff7287}
+.buyer-slot-card.selected{border-color:#ff536e;background:#3a1f2c;box-shadow:0 0 0 2px #ff405855}
+.buyer-slot-card h4{font:800 15px 'Rajdhani',sans-serif;margin:0 0 4px;color:#fff}
+.buyer-slot-meta{display:flex;gap:5px;flex-wrap:wrap}
+.buyer-slot-meta span{font-size:9px;font-weight:700;color:#f3dce4;background:#392431;border-radius:6px;padding:3px 6px}
+.buyer-slot-rw{font-size:9px;color:#d9b9c5;margin-top:5px}
+.buyer-slot-list{max-height:none}
+@media(max-width:560px){.buyer-day-grid{grid-template-columns:1fr 1fr}}
+
+.buyer-slot-card.selected,.buyer-day-col.empty-day.selected{
+  animation: pickPulse .35s ease;
+  border-color:#ff536e!important;
+  background:linear-gradient(145deg,#4a2230,#2a1820)!important;
+  box-shadow:0 0 0 2px #ff4058aa,0 8px 22px #ff405833!important;
+}
+.buyer-slot-card.selected h4{color:#ffb3c0}
+.buyer-slot-card.selected::after{
+  content:'✓';
+  font-weight:900;
+  color:#ff9aab;
+  font-size:16px;
+  flex:none;
+}
+@keyframes pickPulse{
+  0%{transform:scale(.97);filter:brightness(1.2)}
+  100%{transform:scale(1);filter:brightness(1)}
+}
+.buyer-slot-card:active,.buyer-day-col.empty-day:active{transform:scale(.97)}
+</style>
+
+</head>
+<body>
+<div class="top"><span class="top-live"><i></i> PROMOTER HUB · WIB</span><span>Jadwal, slot live & update toko</span><a href="https://whatsapp.com/channel/0029VbBeSX2GJP8R5JXuA712" target="_blank" rel="noopener">◉ Channel WhatsApp <b>Join Sekarang ↗</b></a></div>
+<div class="shade" id="shade" onclick="closeSide()"></div><div class="shell">
+<aside class="side" id="side"><div class="brand"><div class="logo">♛</div><div><strong>RulzzGTPS</strong><small>PROMOTER HUB</small></div></div>
+<div class="navlabel">MENU UTAMA</div><nav class="nav" id="publicNav">
+<button class="active" data-page="home">⌂ <span>Beranda</span></button><button data-page="schedule">▦ <span>Jadwal BA</span></button><button data-page="services">✦ <span>Layanan BA</span></button><button data-page="buy">＋ <span>Beli Promoter</span></button><button data-page="orders">⌕ <span>Cek Pesanan</span><i class="pill" style="margin-left:auto">BARU</i></button></nav>
+<div class="navlabel" style="margin-top:14px">PENGELOLAAN</div><nav class="nav"><button id="adminEntry" onclick="openLogin()">⚙ <span>Login Admin</span></button></nav>
+<div class="sidebox"><b>📢 Update RulzzGTPS</b><p>Jadwal live, slot kosong, dan perubahan status diumumkan di saluran resmi.</p><a href="https://whatsapp.com/channel/0029VbBeSX2GJP8R5JXuA712" target="_blank" rel="noopener">BUKA SALURAN ↗</a></div></aside>
+<main class="main"><div class="mobilehead"><div class="brand" style="padding:0"><div class="logo">♛</div><div><strong>RulzzGTPS</strong><small>PROMOTER HUB</small></div></div><button class="hamb" onclick="toggleSide()">☰</button></div>
+<section class="page active" id="page-home"><div class="hero"><div class="hero-content"><div class="eyebrow">✦ RULZZGTPS / PROMOTER HUB</div><h1>Make your world<br>get noticed.</h1><p>Growtopia BA dan live gaming. Pilih slot, konfirmasi detail, lalu selesaikan pembayaran dengan alur yang jelas.</p><div class="actions"><button class="btn primary" onclick="go('buy')">Beli Promoter ↗</button><button class="btn secondary" onclick="go('schedule')">Lihat Jadwal</button></div></div><img class="hero-art" src="./assets/mascot-hero.png" alt="Maskot burung RulzzGTPS memakai mahkota dan headset">
+<!-- SVG ornament layers -->
+<svg class="hero-lines" viewBox="0 0 900 340" aria-hidden="true"><defs><linearGradient id="slash" x1="0" x2="1"><stop stop-color="#ff3154"/><stop offset="1" stop-color="#ff9aaa"/></linearGradient><filter id="sparkGlow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><path d="M0 58 115 8l90 34 75-22M0 286l110-38 78 28 70-18" fill="none" stroke="url(#slash)" stroke-width="2" opacity=".8"/><path d="m520 44 9 18 18 9-18 9-9 18-9-18-18-9 18-9zM680 28l6 12 12 6-12 6-6 12-6-12-12-6 12-6zM420 240l7 14 14 7-14 7-7 14-7-14-14-7 14-7z" fill="#ff8ea0" filter="url(#sparkGlow)"/><circle cx="350" cy="55" r="2" fill="#fff"/><circle cx="590" cy="270" r="3" fill="#ff9aaa"/><path d="m250 315 20-12 20 12 20-12 20 12" fill="none" stroke="#ff405e" stroke-width="3"/></svg>
+<div class="sectionhead"><div><h2>Status layanan</h2><p>Informasi singkat operasional RulzzGTPS</p></div><span id="homeStatus" class="status">● OPEN</span></div><div class="grid"><div class="card"><h3>🎮 Growtopia BA</h3><p>Promosi server Growtopia dengan slot live terjadwal.</p><div class="big" id="homePrice">Rp20.000 <small style="font-size:10px;color:#91a9c2">/ jam</small></div></div><div class="card"><h3>🔴 Live Gaming</h3><p>Promosi ketika sesi live gaming berlangsung.</p><div class="big">By schedule</div></div><div class="card"><h3>🗓 Flexible</h3><p>Waktu khusus sesuai kesepakatan dengan admin.</p><div class="big">Custom</div></div></div>
+<div class="sectionhead"><div><h2>Jadwal terdekat</h2><p>Durasi live mengikuti pengaturan admin</p></div><button class="btn quiet" onclick="go('schedule')">Semua jadwal →</button></div><div class="card all" id="homeSchedule"><div class="empty">Memuat jadwal…</div></div></section>
+<section class="page" id="page-schedule"><div class="sectionhead"><div><h2>Jadwal BA</h2><p>Semua waktu menggunakan WIB · Durasi mengikuti pengaturan admin</p></div><span class="pill">REAL-TIME</span></div><div class="card all" id="scheduleList"><div class="empty">Memuat jadwal…</div></div></section>
+<section class="page" id="page-services"><div class="hero"><div class="eyebrow">LAYANAN RULZZGTPS</div><h1>Pilih layanan<br>yang kamu butuhkan.</h1><p>Slot dan harga akhir dikonfirmasi admin sebelum pembayaran dilakukan.</p></div><div class="grid" style="margin-top:14px"><div class="card"><h3>🎮 Growtopia</h3><p>BA/promosi untuk server Growtopia. Harga awal Rp20.000 per jam, final mengikuti konfirmasi admin.</p><div class="actions"><button class="btn primary" onclick="chooseService('Growtopia BA')">Pilih layanan</button></div></div><div class="card"><h3>🔴 Live Gaming</h3><p>Promosi pada sesi live gaming yang tersedia di jadwal.</p><div class="actions"><button class="btn primary" onclick="chooseService('Live Gaming')">Pilih layanan</button></div></div><div class="card"><h3>🗓 Jadwal Flexible</h3><p>Ajukan waktu pilihan. Admin akan memeriksa slot dan mengonfirmasi harga.</p><div class="actions"><button class="btn primary" onclick="chooseService('Jadwal Flexible')">Pilih layanan</button></div></div></div></section>
+<section class="page" id="page-buy"><div class="sectionhead"><div><h2>Beli Promoter</h2><p>Pilih tanggal & slot yang tersedia, isi detail, upload bukti, lalu langsung kirim ke WhatsApp Admin.</p></div><span id="buyStatus" class="status">● OPEN</span></div>
+<div class="grid"><div class="card wide"><h3>01 · Detail pembelian</h3><form id="buyForm"><div class="formgrid"><div class="field"><label>Nama / nickname</label><input id="buyerName" required maxlength="70" placeholder="Nama kamu"></div><div class="field"><label>Nomor WhatsApp</label><input id="buyerPhone" required inputmode="tel" maxlength="20" placeholder="08xxxxxxxxxx"></div><div class="field"><label>Layanan</label><select id="buyerService" required><option value="">Pilih layanan</option><option>Growtopia BA</option><option>Live Gaming</option><option>Jadwal Flexible</option></select></div><div class="field"><label>Nama Server / World (yang mau dipromosikan)</label><input id="buyerServer" required maxlength="100" placeholder="Contoh: RulzzGTPS / WORLDNAME"></div><div class="field full"><label>Pilih hari / slot BA</label>
+<p class="hint" style="margin:0 0 10px">Klik slot OPEN, atau klik hari kosong untuk flexible. Otomatis sinkron dengan jadwal admin.</p>
+<input type="hidden" id="buyerSlot" required value="">
+<input type="hidden" id="buyerDate" value="">
+<div id="buyerSlotList" class="buyer-slot-list"><div class="empty">Memuat jadwal tersedia…</div></div>
+</div>
+<div class="field"><label>Durasi live</label><input id="buyerDuration" value="3 jam per server" disabled></div><div class="field"><label>Nominal transfer (Rp) — isi sesuai kesepakatan / estimasi</label><input id="buyerAmount" type="number" min="0" step="1000" required placeholder="Contoh: 60000"></div><div class="field"><label>Catatan tambahan</label><input id="buyerNote" maxlength="250" placeholder="Opsional"></div></div><p class="hint">Pilih tanggal dulu → slot otomatis menampilkan jadwal OPEN di hari itu (bisa 2–3 server). Lalu isi detail, pilih payment, upload bukti, dan kirim ke WhatsApp Admin.</p>
+<div class="sectionhead"><div><h2>02 · Metode pembayaran</h2><p>Pilih metode setelah admin mengonfirmasi total biaya.</p></div></div><div id="paymentOptions" class="formgrid"><div class="empty">Metode pembayaran dimuat dari pengaturan admin…</div></div><div id="paymentInfo" class="notice hidden" style="margin-top:12px"></div>
+<div class="sectionhead"><div><h2>03 · Upload bukti transfer</h2><p>Unggah bukti setelah transfer full sesuai nominal yang disepakati.</p></div></div><div class="field"><label>File bukti transfer (JPG, PNG, WEBP, PDF · maks 5 MB)</label><input id="proofFile" type="file" accept="image/jpeg,image/png,image/webp,application/pdf" required></div>
+<div class="notice" style="margin-top:14px"><b>Langkah kirim pesanan</b><br>1. Isi detail pembelian lengkap. 2. Pilih metode pembayaran. 3. Upload bukti transfer (wajib). 4. Klik tombol → langsung kirim ke WhatsApp Admin beserta ID pesanan.</div>
+<div class="actions"><button id="submitBuy" class="btn primary buy-submit" type="submit" disabled>Kirim ke WhatsApp Admin ↗</button><span class="hint" id="formHint">Lengkapi detail + pilih payment + upload bukti transfer dulu.</span></div></form></div>
+<div class="card"><h3>Alur pembelian</h3><div class="steps"><div class="step"><b>1.</b> Isi detail pembelian.</div><div class="step"><b>2.</b> Pilih metode pembayaran.</div><div class="step"><b>3.</b> Transfer sesuai nominal yang disepakati.</div><div class="step"><b>4.</b> Upload bukti transfer (wajib).</div><div class="step"><b>5.</b> Klik tombol → langsung kirim ke WhatsApp Admin.</div><div class="step"><b>6.</b> Admin cek & konfirmasi status.</div></div><p class="hint" style="margin-top:14px">Pastikan cek Jadwal BA terlebih dahulu. Jika server down atau live terlambat, waktu live dihitung sesuai ketentuan yang disepakati.</p><div class="sectionhead"><div><h2>Kontak admin</h2><p>Konfirmasi slot dan harga</p></div></div><p style="font-size:12px">WhatsApp: <b>+62 831-0202-9092</b></p></div></div></section>
+<section class="page" id="page-orders"><div class="sectionhead"><div><h2>Cek Pesanan</h2><p>Lihat perkembangan pesanan dengan ID unik yang kamu terima setelah mengirim pengajuan.</p></div><span class="pill">ORDER TRACKER</span></div><div class="grid"><div class="card wide"><h3>Masukkan ID Pesanan</h3><form id="statusLookup" class="formgrid"><div class="field full"><label>ID pesanan</label><input id="lookupOrderId" required maxlength="24" placeholder="Contoh: RULZ5000098000" autocomplete="off"></div><div class="field full"><label>Nomor WhatsApp saat memesan</label><input id="lookupPhone" inputmode="tel" required maxlength="20" placeholder="08xxxxxxxxxx"></div><div class="field full"><button class="btn primary full" type="submit">Cari Pesanan <span aria-hidden="true">↗</span></button></div></form><div id="lookupResult" aria-live="polite"></div></div><div class="card"><h3>Di mana ID pesanan?</h3><div class="steps"><div class="step"><b>01</b> Setelah formulir dan bukti transfer berhasil dikirim, ID tampil di notifikasi website.</div><div class="step"><b>02</b> ID yang sama ikut tertulis otomatis di pesan WhatsApp untuk admin.</div><div class="step"><b>03</b> Salin ID berawalan <b>RULZ</b>, tempel di kolom pencarian, lalu masukkan nomor WhatsApp.</div></div><div class="notice" style="margin-top:12px">Simpan ID pesanan. ID ini menjadi kunci untuk menemukan detail dan status pesananmu.</div></div></div></section>
+<section class="page" id="page-admin"><div class="sectionhead"><div><h2>Admin Setting</h2><p>Pengelolaan operasional RulzzGTPS</p></div><button class="btn quiet" onclick="logout()">Logout</button></div><div class="grid"><div class="card all"><div class="nav" id="adminTabs" style="display:flex;flex-wrap:wrap"><button class="active" data-tab="dash">Dashboard</button><button data-tab="slots">Jadwal & Server</button><button data-tab="store">Status Toko</button><button data-tab="payments">Payment</button><button data-tab="orders">Riwayat Pembelian</button><button data-tab="audit">Audit Log</button></div></div>
+<div class="card all adminTab" id="tab-dash"><h3>Ringkasan</h3><div class="grid"><div class="card"><p>Total pembelian</p><div class="big" id="orderCount">0</div></div><div class="card"><p>Status toko</p><div class="big" id="adminStoreStatus">—</div></div><div class="card"><p>Jadwal aktif</p><div class="big" id="slotCount">0</div></div></div></div>
+<div class="card all adminTab hidden" id="tab-slots"><h3>Tambah jadwal server</h3><p class="hint">Maks server/hari & durasi mengikuti Status Toko. Sistem cegah jam bentrok otomatis.</p><form id="slotForm" class="formgrid"><div class="field"><label>Nama server / sesi BA</label><input id="slotTitle" required maxlength="80"></div><div class="field"><label>Tanggal</label><input id="slotDate" type="date" required></div><div class="field"><label>Jam mulai WIB</label><input id="slotStart" type="time" required></div><div class="field"><label>Status hari / slot</label><select id="slotStatus"><option value="OPEN">OPEN</option><option value="CLOSED">CLOSED</option></select></div><div class="field"><label>Jangkauan jadwal</label><input id="slotReach" maxlength="100" placeholder="Contoh: 1 server / 1 world"></div><div class="field"><label>Catatan</label><input id="slotNote" maxlength="150" placeholder="Info tambahan (opsional)"></div><div class="field"><label>Reward Top 1</label><input id="rewardTop1" maxlength="100" placeholder="Contoh: 100 WL"></div><div class="field"><label>Reward Top 2</label><input id="rewardTop2" maxlength="100" placeholder="Contoh: 50 WL"></div><div class="field"><label>Reward Top 3</label><input id="rewardTop3" maxlength="100" placeholder="Contoh: 25 WL"></div><div class="field full"><button class="btn primary">Simpan jadwal (durasi mengikuti setting toko)</button></div></form><div id="adminSlots"></div></div>
+<div class="card all adminTab hidden" id="tab-store"><h3>Status toko</h3><div class="formgrid"><div class="field"><label>Status</label><select id="storeStatus"><option value="open">OPEN</option><option value="closed">CLOSED</option></select></div><div class="field"><label>Harga awal per jam (IDR)</label><input id="storePrice" type="number" min="0" step="1000"></div>
+<div class="field"><label>Durasi live per server (jam)</label><input id="storeDuration" type="number" min="1" max="12" step="1" value="3"></div>
+<div class="field"><label>Maks server per hari</label><input id="storeMaxServer" type="number" min="1" max="10" step="1" value="3"></div>
+<div class="field full"><p class="hint">Contoh: isi 2 → satu hari maksimal 2 slot OPEN. Melebihi batas tidak bisa ditambah (cegah bentrok).</p></div>
+<div class="field full"><button class="btn primary" onclick="saveStore()">Simpan pengaturan</button></div></div></div>
+<div class="card all adminTab hidden" id="tab-payments"><h3>Pengaturan payment</h3><form id="paymentForm" class="formgrid"><div class="field"><label>Nomor DANA / GoPay / OVO</label><input id="payNumber" value="083102029092"></div><div class="field"><label>Nama penerima</label><input id="payName" value="Rulzz Store"></div><div class="field"><label>DANA aktif</label><select id="pDana"><option value="true">Aktif</option><option value="false">Nonaktif</option></select></div><div class="field"><label>GoPay aktif</label><select id="pGopay"><option value="true">Aktif</option><option value="false">Nonaktif</option></select></div><div class="field"><label>OVO aktif</label><select id="pOvo"><option value="true">Aktif</option><option value="false">Nonaktif</option></select></div><div class="field"><label>QRIS aktif</label><select id="pQris"><option value="true">Aktif</option><option value="false">Nonaktif</option></select></div><div class="field full"><button class="btn primary">Simpan payment</button></div></form><p class="hint">Gambar QRIS berasal dari aset QRIS yang kamu kirim. Pastikan rekening/merchant dan QRIS masih aktif sebelum website dipublikasikan.</p></div>
+<div class="card all adminTab hidden" id="tab-orders"><h3>Riwayat pembelian · Admin only</h3><div id="ordersList"><div class="empty">Memuat…</div></div></div><div class="card all adminTab hidden" id="tab-audit"><h3>Aktivitas admin</h3><p class="hint">Catatan perubahan status pesanan, jadwal, dan pengaturan.</p><div id="auditList"><div class="empty">Memuat…</div></div></div></div></section>
+<div class="footer">RulzzGTPS · Promoter Hub · <b>Credit @Simbaa — Designer</b></div></main></div>
+<div class="overlay" id="loginModal"><form class="modal" id="loginForm"><h2>Admin Login</h2><p>Masuk menggunakan akun admin yang sudah dibuat di server. Tidak tersedia pendaftaran akun.</p><div class="field"><label>Username</label><input id="adminUser" autocomplete="username" required></div><div class="field"><label>Password</label><input id="adminPass" type="password" autocomplete="current-password" required></div><div class="actions"><button type="button" class="btn quiet" onclick="closeLogin()">Batal</button><button class="btn primary" type="submit">Login aman →</button></div><p class="hint">Kredensial diverifikasi Supabase Auth, bukan ditanam di source browser.</p></form></div><div class="toast" id="toast"></div>
+<script>
+// Isi URL dan anon key dari Supabase Project Settings > API. Anon key boleh ada di browser; service-role key DILARANG.
+const SUPABASE_URL = window.RULZZ_SUPABASE_URL || '';
+const SUPABASE_ANON_KEY = window.RULZZ_SUPABASE_ANON_KEY || '';
+const ADMIN_EMAIL = 'rulzzadmin@rulzzgtps.id';
+const WA_ADMIN = '6283102029092';
+const db = SUPABASE_URL && SUPABASE_ANON_KEY ? window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}}) : null;
+let currentUser=null, isAdmin=false, settings={store_open:true,price_per_hour:20000,live_duration_hours:3,max_servers_per_day:3,payment_number:'083102029092',payment_name:'Rulzz Store',methods:{DANA:true,GoPay:true,OVO:true,QRIS:true}}, slots=[], selectedPayment='';
+const $=id=>document.getElementById(id); const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function toast(s){$('toast').textContent=s;$('toast').classList.add('show');setTimeout(()=>$('toast').classList.remove('show'),2600)}
+function go(p){if(p==='admin'&&!isAdmin){openLogin();return}document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));$('page-'+p).classList.add('active');document.querySelectorAll('#publicNav button').forEach(b=>b.classList.toggle('active',b.dataset.page===p));closeSide();window.scrollTo({top:0,behavior:'smooth'});if(p==='admin')loadAdmin()}
+document.querySelectorAll('#publicNav button').forEach(b=>b.onclick=()=>go(b.dataset.page));function toggleSide(){$('side').classList.toggle('open');$('shade').classList.toggle('show')}function closeSide(){$('side').classList.remove('open');$('shade').classList.remove('show')}function openLogin(){$('loginModal').classList.add('show');closeSide()}function closeLogin(){$('loginModal').classList.remove('show')}
+function chooseService(s){$('buyerService').value=s;go('buy')}
+function setStoreUI(){const open=settings.store_open;$('homeStatus').textContent=open?'● OPEN':'● CLOSED';$('homeStatus').className='status'+(open?'':' closed');$('buyStatus').textContent=open?'● OPEN':'● CLOSED';$('buyStatus').className='status'+(open?'':' closed');$('homePrice').innerHTML='Rp'+Number(settings.price_per_hour).toLocaleString('id-ID')+' <small style="font-size:10px;color:#91a9c2">/ jam</small>';}
+async function loadPublic(){if(!db){toast('Hubungkan Supabase terlebih dahulu.');renderSchedule();renderPayments();return}try{const [s,j]=await Promise.all([db.from('site_settings').select('*').eq('id',1).single(),db.from('ba_schedules').select('*').order('starts_at')]);if(!s.error&&s.data)settings={...settings,...s.data};if(!j.error)slots=j.data||[];setStoreUI();renderSchedule();renderPayments()}catch(e){console.error(e);toast('Gagal memuat data online')}}
+function fmt(iso){return new Intl.DateTimeFormat('id-ID',{dateStyle:'medium',timeStyle:'short',timeZone:'Asia/Jakarta'}).format(new Date(iso))}
+function dayKey(iso){return new Intl.DateTimeFormat('en-US',{weekday:'long',timeZone:'Asia/Jakarta'}).format(new Date(iso))}
+function dateKey(iso){return new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Jakarta',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date(iso))}
+function renderSchedule(){
+ const order=['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
+ const names={Monday:'Senin',Tuesday:'Selasa',Wednesday:'Rabu',Thursday:'Kamis',Friday:'Jumat',Saturday:'Sabtu',Sunday:'Minggu'};
+ const dayGroups=order.map(day=>{const items=slots.filter(x=>dayKey(x.starts_at)===day).sort((a,b)=>new Date(a.starts_at)-new Date(b.starts_at));return `<section class="day-group"><div class="day-heading"><div><span class="day-kicker">JADWAL MINGGUAN</span><h3>${names[day]}</h3></div><span class="day-count">${items.length?items.length+' jadwal':'Belum ada jadwal'}</span></div>${items.length?items.map(x=>{const rewards=[['🥇','Top 1',x.reward_top1||'Belum ditentukan'],['🥈','Top 2',x.reward_top2||'Belum ditentukan'],['🥉','Top 3',x.reward_top3||'Belum ditentukan']];const phase=x.live_phase||'idle';const state=phase==='live'?'LIVE':phase==='booked'?'SIAP':phase==='done'?'DONE':(x.status==='OPEN'?'OPEN':'CLOSED');return `<article class="schedule-card"><div class="schedule-main"><div class="schedule-label">BA SERVER</div><h4>${esc(x.server_name)}</h4><div class="schedule-meta"><span class="time-chip">◷ ${new Intl.DateTimeFormat('id-ID',{dateStyle:'medium',timeZone:'Asia/Jakarta'}).format(new Date(x.starts_at))}</span><span class="time-chip">LIVE · ${new Intl.DateTimeFormat('id-ID',{hour:'2-digit',minute:'2-digit',timeZone:'Asia/Jakarta',hour12:false}).format(new Date(x.starts_at))}–${new Intl.DateTimeFormat('id-ID',{hour:'2-digit',minute:'2-digit',timeZone:'Asia/Jakarta',hour12:false}).format(new Date(x.ends_at))} WIB</span><span class="time-chip">${(settings.live_duration_hours||3)} JAM</span></div><div class="reach-line">Jangkauan: <b>${esc(x.reach_label||'1 server')}</b>${x.note?` · ${esc(x.note)}`:''}</div>${rewards.length?`<div class="reward-box"><div class="reward-title">✦ REWARDS TOP LIVE</div><div class="reward-grid">${rewards.map(r=>`<div class="reward-item"><span>${r[0]} ${r[1]}</span><b>${esc(r[2])}</b></div>`).join('')}</div></div>`:''}<div class="count-line slot-countdown" data-start="${esc(x.live_phase==='live'&&x.live_started_at?x.live_started_at:x.starts_at)}" data-end="${esc(x.ends_at)}" data-phase="${esc(x.live_phase||'idle')}">Menghitung waktu…</div></div><div class="schedule-side"><span class="schedule-status ${state==="LIVE"||state==="OPEN"?"open":"closed"}">${state}</span><small>${dateKey(x.starts_at)}</small></div></article>`}).join(''):`<div class="day-empty"><span>✦</span><b>Belum ada jadwal BA</b><small>Jadwal untuk hari ${names[day]} akan muncul di sini jika sudah diatur admin.</small></div>`}</section>`}).join('');
+ $('scheduleList').innerHTML=dayGroups;
+ $('homeSchedule').innerHTML=slots.filter(x=>x.status==='OPEN').slice(0,3).map(x=>`<div class="rowitem"><div><b>${esc(x.server_name)}</b><small>${fmt(x.starts_at)} · ${(settings.live_duration_hours||3)} jam WIB</small></div><span class="pill">OPEN</span></div>`).join('')||'<div class="empty">Belum ada jadwal tersedia.</div>';
+ renderBuyerSlots();
+ const slotCount=$('slotCount');if(slotCount)slotCount.textContent=slots.filter(x=>x.status==='OPEN').length;updateCountdowns();
+}
+function renderPayments(){const methods=Object.entries(settings.methods||{}).filter(([,v])=>v);$('paymentOptions').innerHTML=methods.map(([m])=>`<label class="payoption"><input type="radio" name="payment" value="${esc(m)}" required><span>${esc(m)}</span></label>`).join('')||'<p class="hint">Belum ada metode pembayaran aktif. Hubungi admin.</p>';document.querySelectorAll('input[name="payment"]').forEach(x=>x.onchange=()=>{selectedPayment=x.value;$('paymentInfo').classList.remove('hidden');$('paymentInfo').innerHTML=x.value==='QRIS'?`<b>QRIS RulzzGTPS</b><br>Scan setelah admin mengonfirmasi slot dan nominal. Pastikan nama merchant benar.<br><img class="preview" id="qrisPreview" src="./qris-rulzz.jpg" alt="QRIS RulzzGTPS" style="margin-top:10px"><div class="actions"><button type="button" class="btn primary" onclick="downloadQris()">↓ Download QRIS</button></div>`:`<b>${esc(x.value)}</b><br>Nomor: <strong id="payCopyValue">${esc(settings.payment_number)}</strong><br>Nama penerima: ${esc(settings.payment_name)}<div class="actions"><button type="button" class="btn quiet" onclick="copyPayment()">▣ Salin nomor</button></div><span class="hint">Transfer hanya setelah admin mengonfirmasi total.</span>`;validateBuy()})}
+function downloadQris(){const a=document.createElement('a');a.href='./qris-rulzz.jpg';a.download='RulzzGTPS-QRIS.jpg';document.body.appendChild(a);a.click();a.remove();toast('QRIS diunduh')}
+async function copyPayment(){const value=settings.payment_number||'083102029092';try{await navigator.clipboard.writeText(value);toast('Nomor payment berhasil disalin')}catch(e){const t=document.createElement('textarea');t.value=value;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();toast('Nomor payment berhasil disalin')}}
+
+
+function renderBuyerSlots(){
+  const list = $('buyerSlotList');
+  if(!list) return;
+  const openSlots = slots.filter(x => x.status === 'OPEN').sort((a,b)=>new Date(a.starts_at)-new Date(b.starts_at));
+  const dur = (settings.live_duration_hours||3)+' jam';
+  if($('buyerDuration')) $('buyerDuration').value = dur+' per server';
+  const order=['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
+  const names={Monday:'Senin',Tuesday:'Selasa',Wednesday:'Rabu',Thursday:'Kamis',Friday:'Jumat',Saturday:'Sabtu',Sunday:'Minggu'};
+  const selectedId = $('buyerSlot').value;
+  const selectedDay = $('buyerDate').dataset.day || '';
+
+  list.innerHTML = `<div class="buyer-day-grid">${order.map(day=>{
+    const items = openSlots.filter(x=>dayKey(x.starts_at)===day);
+    const isDaySel = selectedDay===day && !selectedId;
+    if(!items.length){
+      return `<button type="button" class="buyer-day-col empty-day${isDaySel?' selected':''}" onclick="selectEmptyDay('${day}')">
+        <div class="buyer-day-head"><span class="buyer-day-name">${names[day]}</span><span class="buyer-day-count">0/${settings.max_servers_per_day||3}</span></div>
+        <div class="buyer-day-body"><div class="empty-tap">Klik untuk pilih hari ini<br><small>Jadwal flexible / custom</small></div></div>
+      </button>`;
+    }
+    return `<div class="buyer-day-col">
+      <div class="buyer-day-head"><span class="buyer-day-name">${names[day]}</span><span class="buyer-day-count">${items.length}/${settings.max_servers_per_day||3}</span></div>
+      <div class="buyer-day-body">${items.map(x=>{
+        const t1=new Intl.DateTimeFormat('id-ID',{hour:'2-digit',minute:'2-digit',timeZone:'Asia/Jakarta',hour12:false}).format(new Date(x.starts_at));
+        const t2=new Intl.DateTimeFormat('id-ID',{hour:'2-digit',minute:'2-digit',timeZone:'Asia/Jakarta',hour12:false}).format(new Date(x.ends_at));
+        const dKey=dateKey(x.starts_at);
+        const sel=selectedId===String(x.id);
+        const rw=[x.reward_top1,x.reward_top2,x.reward_top3].filter(Boolean).join(' · ')||'Reward: —';
+        return `<button type="button" class="buyer-slot-card${sel?' selected':''}" onclick="selectBuyerSlot('${esc(x.id)}','${dKey}','${day}')">
+          <div class="buyer-slot-main">
+            <h4>${esc(x.server_name)}</h4>
+            <div class="buyer-slot-meta"><span>${t1}–${t2} WIB</span><span>${dur}</span></div>
+            <div class="buyer-slot-rw">${esc(rw)}</div>
+          </div>
+          <span class="schedule-status open">OPEN</span>
+        </button>`;
+      }).join('')}</div>
+    </div>`;
+  }).join('')}</div>`;
+  validateBuy();
+}
+
+function selectEmptyDay(day){
+  const names={Monday:'Senin',Tuesday:'Selasa',Wednesday:'Rabu',Thursday:'Kamis',Friday:'Jumat',Saturday:'Sabtu',Sunday:'Minggu'};
+  $('buyerSlot').value = 'FLEXIBLE:'+day;
+  $('buyerDate').value = '';
+  $('buyerDate').dataset.day = day;
+  if($('buyerService') && !$('buyerService').value) $('buyerService').value = 'Jadwal Flexible';
+  renderBuyerSlots();
+  toast('Hari '+names[day]+' dipilih (flexible)');
+}
+
+function selectBuyerSlot(id, dateKeyVal, day){
+  $('buyerSlot').value = id;
+  $('buyerDate').value = dateKeyVal || '';
+  $('buyerDate').dataset.day = day || '';
+  renderBuyerSlots();
+  toast('Slot dipilih');
+}
+
+function validateBuy(){
+  const missing=[];
+  if(!$('buyerName').value.trim()) missing.push('Nama');
+  if(!$('buyerPhone').value.trim()) missing.push('Nomor WhatsApp');
+  if(!$('buyerService').value.trim()) missing.push('Layanan');
+  if(!$('buyerServer').value.trim()) missing.push('Server/World');
+  if(!$('buyerSlot').value.trim()) missing.push('Slot Jadwal BA');
+  if(!$('buyerAmount').value.trim()) missing.push('Nominal');
+  if(!selectedPayment) missing.push('Metode pembayaran');
+  if(!$('proofFile').files.length) missing.push('Bukti transfer');
+  if(!settings.store_open) missing.push('Toko sedang CLOSED');
+  const valid = missing.length===0;
+  $('submitBuy').disabled=!valid;
+  $('formHint').textContent = valid
+    ? 'Semua data lengkap. Klik tombol untuk kirim ke WhatsApp Admin.'
+    : 'Masih kurang: ' + missing.join(', ');
+}
+['buyerName','buyerPhone','buyerService','buyerServer','buyerDate','buyerSlot','buyerAmount','proofFile','buyerNote'].forEach(id=>{
+  const el=$(id); if(!el) return;
+  el.addEventListener('input',validateBuy);
+  el.addEventListener('change',validateBuy);
+});
+document.addEventListener('change',e=>{ if(e.target && e.target.name==='payment') validateBuy(); });
+
+
+$('buyForm').addEventListener('submit',async e=>{e.preventDefault();
+validateBuy();
+if($('submitBuy').disabled)return;
+const file=$('proofFile').files[0];
+if(!file||file.size>5*1024*1024){toast('File wajib diisi dan maksimal 5 MB.');return}
+if(!['image/jpeg','image/png','image/webp','application/pdf'].includes(file.type)){toast('Format file tidak didukung.');return}
+$('submitBuy').disabled=true;$('submitBuy').textContent='Mengirim…';
+
+const rawSlot=$('buyerSlot').value.trim();
+const isFlex=rawSlot.startsWith('FLEXIBLE:');
+const dayNames={Monday:'Senin',Tuesday:'Selasa',Wednesday:'Rabu',Thursday:'Kamis',Friday:'Jumat',Saturday:'Sabtu',Sunday:'Minggu'};
+
+const selectedSlot=!isFlex?slots.find(s=>String(s.id)===String(rawSlot)):null;
+// preferred_date HARUS tanggal WIB dari slot (backend memvalidasi kecocokan)
+let preferredDate='';
+if(selectedSlot){
+  preferredDate=dateKey(selectedSlot.starts_at); // en-CA Asia/Jakarta YYYY-MM-DD
+}else if(isFlex){
+  const target=rawSlot.replace('FLEXIBLE:','');
+  const orderD=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const want=orderD.indexOf(target);
+  const now=new Date();
+  let add=((want - now.getDay() + 7) % 7);
+  if(add===0) add=0; // hari ini boleh
+  const d=new Date(now.getFullYear(), now.getMonth(), now.getDate()+add);
+  preferredDate=dateKey(d.toISOString());
+}else{
+  preferredDate=$('buyerDate').value || dateKey(new Date().toISOString());
+}
+let slotText='-';
+if(isFlex){
+  slotText='Flexible · '+(dayNames[rawSlot.replace('FLEXIBLE:','')]||rawSlot);
+}else if(selectedSlot){
+  const t1=new Intl.DateTimeFormat('id-ID',{hour:'2-digit',minute:'2-digit',timeZone:'Asia/Jakarta',hour12:false}).format(new Date(selectedSlot.starts_at));
+  const t2=new Intl.DateTimeFormat('id-ID',{hour:'2-digit',minute:'2-digit',timeZone:'Asia/Jakarta',hour12:false}).format(new Date(selectedSlot.ends_at));
+  slotText=selectedSlot.server_name+' · '+(dayNames[dayKey(selectedSlot.starts_at)]||'')+' · '+t1+'-'+t2+' WIB';
+}
+
+const noteExtra=[];
+if(isFlex) noteExtra.push('Flexible day: '+(dayNames[rawSlot.replace('FLEXIBLE:','')]||rawSlot));
+if(selectedSlot) noteExtra.push('Slot: '+selectedSlot.server_name+' ('+slotText+')');
+const baseNote=($('buyerNote').value.trim()||'');
+const fullNote=[baseNote,...noteExtra].filter(Boolean).join(' | ');
+
+const payload={
+  buyer_name:$('buyerName').value.trim(),
+  buyer_phone:$('buyerPhone').value.trim(),
+  service:$('buyerService').value,
+  server_detail:$('buyerServer').value.trim(),
+  schedule_id: isFlex ? null : (rawSlot || null),
+  preferred_date: preferredDate,
+  note: fullNote,
+  payment_method: selectedPayment,
+  amount_paid: Number($('buyerAmount').value)
+};
+
+const waWindow=window.open('about:blank','_blank');
+let orderCode='RULZ'+Date.now().toString().slice(-10);
+let orderSaved=false;
+let proofSaved=false;
+
+try{
+  if(!db) throw new Error('NO_DB');
+
+  // 1) Buat order — retry tanpa schedule_id jika slot error
+  let order=null, error=null;
+  ({data:order, error}=await db.rpc('create_public_order',{p_payload:payload}));
+  if(error){
+    const msg=String(error.message||error.details||error.hint||'');
+    if(/slot|tidak tersedia|schedule|uuid|invalid/i.test(msg) || payload.schedule_id){
+      const p2={...payload, schedule_id:null, note:(fullNote+' | schedule_ref:'+(rawSlot||'-')).trim()};
+      const retry=await db.rpc('create_public_order',{p_payload:p2});
+      order=retry.data; error=retry.error;
+    }
+  }
+  if(error) throw error;
+  if(!order) throw new Error('Order kosong dari server');
+
+  orderCode=order.order_code||order.id||orderCode;
+  orderSaved=true;
+
+  // 2) Upload bukti transfer
+  try{
+    const safeName=file.name.replace(/[^a-zA-Z0-9._-]/g,'_');
+    const path=`${order.id}/${crypto.randomUUID()}-${safeName}`;
+    const up=await db.storage.from('payment-proofs').upload(path,file,{upsert:false,contentType:file.type});
+    if(up.error) throw up.error;
+    const proof=await db.rpc('attach_payment_proof',{p_order_id:order.id, p_object_path:path});
+    if(proof.error) throw proof.error;
+    proofSaved=true;
+  }catch(proofErr){
+    console.error('Proof upload failed', proofErr);
+    toast('Order tersimpan, tapi bukti gagal upload: '+(proofErr.message||''));
+  }
+
+  // 3) Pesan WA sukses
+  const msg=`*PESANAN BARU — RULZZGTPS PROMOTER*
+
+━━━━━━━━━━━━━━━━━━
+📋 *ID PESANAN:* ${orderCode}
+━━━━━━━━━━━━━━━━━━
+
+👤 *Nama:* ${payload.buyer_name}
+📱 *WhatsApp:* ${payload.buyer_phone}
+🎯 *Layanan:* ${payload.service}
+🌐 *Server / World:* ${payload.server_detail}
+📅 *Tanggal:* ${preferredDate}
+⏰ *Slot:* ${slotText}
+💰 *Nominal:* Rp${Number(payload.amount_paid).toLocaleString('id-ID')}
+💳 *Payment:* ${payload.payment_method}
+${fullNote?('📝 *Catatan:* '+fullNote+'\n'):''}━━━━━━━━━━━━━━━━━━
+${proofSaved?'✅ Bukti transfer sudah diunggah ke sistem.':'⚠️ Bukti belum terunggah — kirim manual ke chat ini.'}
+
+Mohon dicek dan dikonfirmasi ya. Terima kasih! 🙏`;
+
+  if(waWindow) waWindow.location.href=`https://wa.me/${WA_ADMIN}?text=${encodeURIComponent(msg)}`;
+  else toast('Popup diblokir. Izinkan popup untuk WhatsApp.');
+
+  toast('Pesanan '+orderCode+(proofSaved?' + bukti':'')+' berhasil');
+  $('lookupOrderId').value=orderCode;
+  go('orders');
+  $('lookupResult').innerHTML=`<div class="order-result"><b>Pesanan berhasil dikirim</b><span class="order-code">${esc(orderCode)}</span><span class="hint">${proofSaved?'Bukti transfer tersimpan.':'Bukti belum terunggah — admin cek via WA.'} Simpan ID untuk cek status.</span><button class="btn quiet" type="button" onclick="copyOrderCode('${orderCode}')">Salin ID Pesanan</button></div>`;
+  e.target.reset(); selectedPayment=''; $('paymentInfo').classList.add('hidden');
+  $('buyerSlot').value=''; $('buyerDate').value=''; if($('buyerDate').dataset) $('buyerDate').dataset.day='';
+  renderBuyerSlots(); validateBuy();
+
+}catch(err){
+  console.error(err);
+  const fallbackMsg=`*PESANAN BARU — RULZZGTPS PROMOTER*
+
+━━━━━━━━━━━━━━━━━━
+📋 *ID PESANAN:* ${orderCode}
+━━━━━━━━━━━━━━━━━━
+
+👤 *Nama:* ${payload.buyer_name}
+📱 *WhatsApp:* ${payload.buyer_phone}
+🎯 *Layanan:* ${payload.service}
+🌐 *Server / World:* ${payload.server_detail}
+📅 *Tanggal:* ${preferredDate}
+⏰ *Slot:* ${slotText}
+💰 *Nominal:* Rp${Number(payload.amount_paid).toLocaleString('id-ID')}
+💳 *Payment:* ${payload.payment_method}
+${fullNote?('📝 *Catatan:* '+fullNote+'\n'):''}━━━━━━━━━━━━━━━━━━
+⚠️ Order belum tercatat otomatis di server.
+Kirim bukti transfer di chat ini juga.
+
+Mohon dicek manual ya. Terima kasih! 🙏`;
+
+  if(waWindow){
+    waWindow.location.href=`https://wa.me/${WA_ADMIN}?text=${encodeURIComponent(fallbackMsg)}`;
+    toast('WA dibuka + ID '+orderCode+' · Server: '+(err.message||'gagal'));
+  }else{
+    toast('Popup diblokir. ID: '+orderCode);
+  }
+  try{
+    $('lookupOrderId').value=orderCode;
+    $('lookupResult').innerHTML=`<div class="order-result"><b>Dikirim via WhatsApp</b><span class="order-code">${esc(orderCode)}</span><span class="hint">Backend error: ${esc(err.message||'')}. Admin proses manual via WA.</span></div>`;
+  }catch(x){}
+}finally{
+  $('submitBuy').textContent='Kirim ke WhatsApp Admin ↗';
+  validateBuy();
+}});
+$('loginForm').addEventListener('submit',async e=>{e.preventDefault();if(!db){toast('Supabase belum dikonfigurasi.');return}const username=$('adminUser').value.trim(),password=$('adminPass').value;if(username.toLowerCase()!=='rulzzadmin'){toast('Username atau password salah');return}try{const {data,error}=await db.auth.signInWithPassword({email:ADMIN_EMAIL,password});if(error)throw error;currentUser=data.user;await checkAdmin();if(!isAdmin){await db.auth.signOut();throw new Error('Akun ini tidak memiliki role admin')}closeLogin();toast('Login admin berhasil');go('admin');subscribeAdminOrders();requestAdminNotifications()}catch(err){toast(err.message||'Login gagal')}});
+async function checkAdmin(){if(!db)return;const {data:{user}}=await db.auth.getUser();currentUser=user;isAdmin=false;if(user){const {data,error}=await db.from('admin_users').select('user_id').eq('user_id',user.id).maybeSingle();isAdmin=!error&&!!data} $('adminEntry').innerHTML=isAdmin?'⚙ <span>Admin Setting</span>':'⚿ <span>Login Admin</span>'; $('adminEntry').onclick=isAdmin?()=>go('admin'):openLogin; if(!isAdmin&&$('page-admin').classList.contains('active'))go('home');return isAdmin;}
+async function logout(){if(db)await db.auth.signOut();isAdmin=false;currentUser=null;try{localStorage.removeItem('rulzz_admin_tab')}catch(e){}go('home');toast('Logout berhasil')}
+function switchAdminTab(t){if(!isAdmin)return;document.querySelectorAll('.adminTab').forEach(x=>x.classList.add('hidden'));$('tab-'+t).classList.remove('hidden');document.querySelectorAll('#adminTabs button').forEach(x=>x.classList.toggle('active',x.dataset.tab===t));try{localStorage.setItem('rulzz_admin_tab',t)}catch(e){}if(t==='orders')loadOrders();if(t==='slots')loadAdminSlots();if(t==='audit')loadAudit()}
+document.querySelectorAll('#adminTabs button').forEach(b=>b.onclick=()=>switchAdminTab(b.dataset.tab));
+async function loadAdmin(){if(!isAdmin)return;
+let savedTab='dash';try{savedTab=localStorage.getItem('rulzz_admin_tab')||'dash'}catch(e){}
+if(!document.getElementById('tab-'+savedTab))savedTab='dash';
+switchAdminTab(savedTab);
+const {data:s}=await db.from('site_settings').select('*').eq('id',1).single();if(s)settings={...settings,...s};$('storeStatus').value=settings.store_open?'open':'closed';$('storePrice').value=settings.price_per_hour;if($('storeDuration'))$('storeDuration').value=settings.live_duration_hours||3;if($('storeMaxServer'))$('storeMaxServer').value=settings.max_servers_per_day||3;$('payNumber').value=settings.payment_number;$('payName').value=settings.payment_name;for(const m of ['Dana','Gopay','Ovo','Qris'])$('p'+m).value=String(!!settings.methods[m.toUpperCase()]);$('adminStoreStatus').textContent=settings.store_open?'OPEN':'CLOSED';const {count}=await db.from('orders').select('*',{count:'exact',head:true});$('orderCount').textContent=count||0;loadAdminSlots();}
+async function saveStore(){if(!isAdmin)return;const patch={store_open:$('storeStatus').value==='open',price_per_hour:Number($('storePrice').value)};
+if($('storeDuration')) patch.live_duration_hours=Number($('storeDuration').value)||3;
+if($('storeMaxServer')) patch.max_servers_per_day=Number($('storeMaxServer').value)||3;
+const {error}=await db.from('site_settings').update(patch).eq('id',1);
+if(error && /live_duration|max_servers|column/i.test(error.message||'')){
+  // kolom belum di-migrate: simpan field dasar saja
+  const {error:e2}=await db.from('site_settings').update({store_open:patch.store_open,price_per_hour:patch.price_per_hour}).eq('id',1);
+  if(e2) return toast(e2.message);
+  return toast('Tersimpan (jalankan migration_fix_orders.sql agar durasi & max server ikut tersimpan)');
+}if(error)return toast(error.message);toast('Status dan harga tersimpan');await loadPublic();}
+$('paymentForm').addEventListener('submit',async e=>{e.preventDefault();if(!isAdmin)return;const methods={DANA:$('pDana').value==='true',GoPay:$('pGopay').value==='true',OVO:$('pOvo').value==='true',QRIS:$('pQris').value==='true'};const {error}=await db.from('site_settings').update({payment_number:$('payNumber').value.trim(),payment_name:$('payName').value.trim(),methods}).eq('id',1);if(error)return toast(error.message);toast('Payment tersimpan');await loadPublic()});
+$('slotForm').addEventListener('submit',async e=>{e.preventDefault();if(!isAdmin)return;const start=new Date(`${$('slotDate').value}T${$('slotStart').value}:00+07:00`),durH=Number(settings.live_duration_hours)||3,end=new Date(start.getTime()+durH*60*60000);
+const dayStr=dateKey(start.toISOString());
+const maxPerDay=Number(settings.max_servers_per_day)||3;
+const sameDay=slots.filter(s=>dateKey(s.starts_at)===dayStr && s.status==='OPEN');
+if(sameDay.length>=maxPerDay){toast('Hari ini sudah penuh ('+maxPerDay+' server). Ubah status atau naikkan batas di Status Toko.');return;}
+// cek bentrok jam
+const overlap=sameDay.some(s=>{const a=new Date(s.starts_at).getTime(),b=new Date(s.ends_at).getTime();return start.getTime()<b && end.getTime()>a;});
+if(overlap){toast('Jam bentrok dengan slot lain di hari yang sama.');return;}
+const {error}=await db.from('ba_schedules').insert({server_name:$('slotTitle').value.trim(),starts_at:start.toISOString(),ends_at:end.toISOString(),status:$('slotStatus').value,note:$('slotNote').value.trim(),reach_label:$('slotReach').value.trim()||'1 server',reward_top1:$('rewardTop1').value.trim()||null,reward_top2:$('rewardTop2').value.trim()||null,reward_top3:$('rewardTop3').value.trim()||null});if(error)return toast(error.message);e.target.reset();toast('Jadwal 3 jam berhasil dibuat');await loadPublic();loadAdminSlots()});
+async function loadAdminSlots(){
+  if(!isAdmin)return;
+  const {data,error}=await db.from('ba_schedules').select('*').order('starts_at');
+  if(error)return;
+  slots=data||[];
+  const phaseLabel={idle:'IDLE',booked:'SIAP BA',live:'LIVE',done:'SELESAI'};
+  $('adminSlots').innerHTML=slots.map(s=>{
+    const phase=s.live_phase||'idle';
+    const btns=[];
+    if(phase==='booked'||phase==='idle'){
+      btns.push(`<button class="btn primary" type="button" onclick="startBA('${s.id}')">Mulai BA</button>`);
+    }
+    if(phase==='live'){
+      btns.push(`<button class="btn quiet" type="button" onclick="finishBA('${s.id}')">Selesai BA</button>`);
+    }
+    btns.push(`<button class="btn danger" type="button" onclick="deleteSlot('${s.id}')">Hapus</button>`);
+    const liveInfo=s.live_started_at?`<small>Mulai aktual: ${fmt(s.live_started_at)}</small>`:'';
+    return `<div class="schedule-card"><div class="schedule-main"><div class="schedule-label">BA SERVER · ${dayKey(s.starts_at)} · ${phaseLabel[phase]||phase}</div><h4>${esc(s.server_name)}</h4><div class="reach-line">${fmt(s.starts_at)}–${fmt(s.ends_at)} WIB · ${esc(s.reach_label||'1 server')} · ${esc(s.status)}</div><div class="hint">🥇 ${esc(s.reward_top1||'—')} · 🥈 ${esc(s.reward_top2||'—')} · 🥉 ${esc(s.reward_top3||'—')}</div>${liveInfo}</div><div style="display:flex;flex-direction:column;gap:6px">${btns.join('')}</div></div>`;
+  }).join('')||'<div class="empty">Belum ada jadwal.</div>';
+  renderSchedule();
+}
+async function startBA(id){
+  if(!isAdmin||!confirm('Mulai BA sekarang? Timer akan berjalan dari saat ini.'))return;
+  try{
+    const {data,error}=await db.rpc('admin_start_ba',{p_schedule_id:id});
+    if(error){
+      // fallback jika RPC belum di-migrate
+      if(/function|schema|admin_start/i.test(error.message||'')){
+        const {error:e2}=await db.from('ba_schedules').update({live_phase:'live',live_started_at:new Date().toISOString(),status:'CLOSED'}).eq('id',id);
+        if(e2)return toast(e2.message);
+      }else return toast(error.message);
+    }
+    toast('BA dimulai');
+    await loadPublic();
+    loadAdminSlots();
+  }catch(e){toast(e.message||'Gagal mulai BA')}
+}
+async function finishBA(id){
+  if(!isAdmin||!confirm('Selesaikan sesi BA ini?'))return;
+  try{
+    const {error}=await db.rpc('admin_finish_ba',{p_schedule_id:id});
+    if(error){
+      if(/function|schema|admin_finish/i.test(error.message||'')){
+        const {error:e2}=await db.from('ba_schedules').update({live_phase:'done',status:'CLOSED'}).eq('id',id);
+        if(e2)return toast(e2.message);
+      }else return toast(error.message);
+    }
+    toast('BA selesai');
+    await loadPublic();
+    loadAdminSlots();
+  }catch(e){toast(e.message||'Gagal menyelesaikan BA')}
+}
+
+async function deleteSlot(id){if(!isAdmin||!confirm('Hapus jadwal ini?'))return;const {error}=await db.from('ba_schedules').delete().eq('id',id);if(error)return toast(error.message);await loadPublic();loadAdminSlots()}
+async function loadOrders(){if(!isAdmin)return;const {data,error}=await db.from('orders').select('id,order_code,buyer_name,buyer_phone,service,server_detail,preferred_date,payment_method,amount_paid,status,created_at,proof_path,rejection_reason').order('created_at',{ascending:false}).limit(100);if(error){$('ordersList').textContent=error.message;return}
+const statusLabel={waiting_admin_confirmation:'Menunggu konfirmasi',waiting_payment_review:'Menunggu review bukti',confirmed:'Disetujui',rejected:'Ditolak'};
+const statusClass={waiting_admin_confirmation:'pill',waiting_payment_review:'pill',confirmed:'status',rejected:'status closed'};
+$('ordersList').innerHTML=(data||[]).map(o=>{
+  const st=o.status||'';
+  const done=st==='confirmed'||st==='rejected';
+  const canAct=st==='waiting_admin_confirmation'||st==='waiting_payment_review';
+  const proofBtn=o.proof_path?`<button class="btn quiet" type="button" onclick="viewProof('${o.id}')">Lihat Bukti</button>`:`<span class="hint">Belum ada bukti</span>`;
+  const actionBtns=canAct?`<button class="btn primary" type="button" onclick="setOrderStatus('${o.id}','confirmed')">Konfirmasi</button><button class="btn danger" type="button" onclick="setOrderStatus('${o.id}','rejected')">Tolak</button>`:'';
+  const reason=st==='rejected'&&o.rejection_reason?`<small style="color:#ffb1bf">Alasan: ${esc(o.rejection_reason)}</small>`:'';
+  return `<div class="rowitem"><div><b>${esc(o.buyer_name)} · ${esc(o.service)}</b><small>${esc(o.server_detail)} · ${esc(o.preferred_date)} · ${esc(o.payment_method)} · Rp${Number(o.amount_paid||0).toLocaleString('id-ID')}</small><small>ID: ${esc(o.order_code||o.id)} · ${fmt(o.created_at)}</small>${reason}</div><div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px"><span class="${statusClass[st]||'pill'}">${statusLabel[st]||esc(st)}</span><div style="display:flex;gap:6px;flex-wrap:wrap">${proofBtn}${actionBtns}</div></div></div>`;
+}).join('')||'<div class="empty">Belum ada pembelian.</div>'}
+async function viewProof(id){
+  if(!isAdmin)return;
+  const {data,error}=await db.from('orders').select('proof_path,order_code').eq('id',id).single();
+  if(error||!data?.proof_path)return toast('Bukti belum tersedia');
+  const {data:url,error:e}=await db.storage.from('payment-proofs').createSignedUrl(data.proof_path,120);
+  if(e)return toast(e.message||'Gagal membuat link bukti');
+  window.open(url.signedUrl,'_blank','noopener');
+  toast('Membuka bukti '+(data.order_code||''));
+}
+async function setOrderStatus(id,status){
+  if(!isAdmin)return;
+  const patch={status};
+  if(status==='rejected'){
+    const reason=prompt('Alasan penolakan (wajib):','Bukti transfer tidak valid');
+    if(reason===null)return;
+    const r=reason.trim();
+    if(!r){toast('Alasan penolakan wajib diisi');return}
+    patch.rejection_reason=r.slice(0,250);
+  }
+  if(status==='confirmed'){
+    patch.rejection_reason=null;
+  }
+  const {error}=await db.from('orders').update(patch).eq('id',id);
+  if(error){
+    if(/rejection_reason|column/i.test(error.message||'')){
+      const {error:e2}=await db.from('orders').update({status}).eq('id',id);
+      if(e2)return toast(e2.message);
+      toast(status==='confirmed'?'Disetujui':'Ditolak');
+      return loadOrders();
+    }
+    return toast(error.message);
+  }
+  // Jika disetujui → apply ke jadwal (BOOKED, timer belum jalan)
+  if(status==='confirmed'){
+    try{
+      const {data:ord}=await db.from('orders').select('id,schedule_id,order_code,server_detail').eq('id',id).single();
+      if(ord?.schedule_id){
+        const {error:se}=await db.from('ba_schedules').update({
+          live_phase:'booked',
+          confirmed_order_id:ord.id,
+          status:'OPEN' // masih bisa dilihat, belum live
+        }).eq('id',ord.schedule_id);
+        if(se){
+          // kolom belum ada: abaikan, minta migration
+          console.warn(se);
+          toast('Disetujui. Jalankan migration agar jadwal ikut BOOKED.');
+        }else{
+          toast('Disetujui & diterapkan ke jadwal (siap Mulai BA)');
+          await loadPublic();
+          loadAdminSlots();
+        }
+      }else{
+        toast('Disetujui (tanpa slot jadwal — flexible)');
+      }
+    }catch(e){console.warn(e);toast('Disetujui');}
+  }else{
+    toast('Pesanan ditolak');
+  }
+  loadOrders();
+}
+
+function updateCountdowns(){document.querySelectorAll('.slot-countdown').forEach(el=>{
+  const start=new Date(el.dataset.start).getTime(),end=new Date(el.dataset.end).getTime(),now=Date.now();
+  const phase=el.dataset.phase||'idle';
+  if(phase==='booked'){el.textContent='SIAP BA · menunggu admin Mulai BA';return}
+  if(phase==='done'){el.textContent='BA selesai';return}
+  if(phase==='live'||now>=start){
+    if(now<end){const ms=end-now;el.textContent='LIVE · tersisa '+Math.floor(ms/3600000)+'j '+Math.floor(ms%3600000/60000)+'m'}
+    else el.textContent='Sesi selesai';
+    return;
+  }
+  const ms=start-now;el.textContent='Mulai dalam '+Math.floor(ms/3600000)+'j '+Math.floor(ms%3600000/60000)+'m';
+})}
+setInterval(updateCountdowns,30000);
+$('statusLookup').addEventListener('submit',async e=>{e.preventDefault();if(!db)return toast('Backend belum dikonfigurasi');const code=$('lookupOrderId').value.trim().toUpperCase();if(!/^RULZ[0-9]{10}$/.test(code)){ $('lookupResult').innerHTML='<div class="notice">Format ID tidak sesuai. Contoh: RULZ5000098000</div>';return }$('lookupResult').innerHTML='<div class="hint">Memeriksa pesanan…</div>';try{const {data,error}=await db.rpc('lookup_public_order_status',{p_order_code:code,p_phone:$('lookupPhone').value.trim()});if(error)throw error;if(!data||!data.status)throw new Error('Pesanan tidak ditemukan. Periksa ID dan nomor WhatsApp.');const labels={waiting_admin_confirmation:'Menunggu konfirmasi admin',waiting_payment_review:'Bukti diterima · menunggu verifikasi',confirmed:'Disetujui',rejected:'Pembayaran ditolak'};
+const reasonRow=data.status==='rejected'&&data.rejection_reason?`<div class="rowitem"><span>Alasan</span><b style="color:#ffb1bf">${esc(data.rejection_reason)}</b></div>`:(data.status==='rejected'?`<div class="rowitem"><span>Alasan</span><b style="color:#ffb1bf">Ditolak oleh admin</b></div>`:'');
+$('lookupResult').innerHTML=`<div class="order-result"><span class="pill">DETAIL PESANAN</span><span class="order-code">${esc(code)}</span><div class="rowitem"><span>Status</span><b>${esc(labels[data.status]||data.status)}</b></div>${reasonRow}<div class="rowitem"><span>Layanan</span><b>${esc(data.service)}</b></div><div class="rowitem"><span>Server / World</span><b>${esc(data.server_detail)}</b></div><div class="rowitem"><span>Jadwal</span><b>${esc(data.preferred_date||'-')}</b></div><div class="rowitem"><span>Payment</span><b>${esc(data.payment_method||'-')}</b></div><div class="rowitem"><span>Nominal</span><b>Rp${Number(data.amount_paid||0).toLocaleString('id-ID')}</b></div></div>`}catch(err){$('lookupResult').innerHTML=`<div class="notice">${esc(err.message||'Gagal memeriksa status')}</div>`}});
+function copyOrderCode(code){navigator.clipboard?.writeText(code).then(()=>toast('ID pesanan disalin')).catch(()=>toast('Salin ID: '+code))}
+let orderChannel=null;
+function subscribeAdminOrders(){if(!db||!isAdmin||orderChannel)return;orderChannel=db.channel('rulzz-admin-live').on('postgres_changes',{event:'INSERT',schema:'public',table:'orders'},payload=>{toast('Pembelian baru masuk');if('Notification'in window&&Notification.permission==='granted')new Notification('RulzzGTPS · Pembelian baru',{body:'Ada pengajuan promoter baru.'});const badge=$('adminEntry');badge.innerHTML='⚙ <span>Admin Setting · Baru</span>';if(!$('tab-orders').classList.contains('hidden'))loadOrders()}).subscribe()}
+async function requestAdminNotifications(){if('Notification'in window&&Notification.permission==='default'){try{await Notification.requestPermission()}catch(e){}}}
+async function loadAudit(){if(!isAdmin)return;const {data,error}=await db.from('admin_audit_logs').select('id,table_name,action,record_id,changed_at,summary').order('changed_at',{ascending:false}).limit(50);if(error){$('auditList').textContent=error.message;return}$('auditList').innerHTML=(data||[]).map(x=>`<div class="rowitem"><div><b>${esc(x.action)} · ${esc(x.table_name)}</b><small>${esc(x.summary||'Perubahan data')} · ${fmt(x.changed_at)}</small><small>ID: ${esc(x.record_id||'-')}</small></div></div>`).join('')||'<div class="empty">Belum ada aktivitas tercatat.</div>'}
+if(db){db.auth.onAuthStateChange((_event,session)=>{setTimeout(async()=>{await checkAdmin();if(isAdmin&&$('page-admin').classList.contains('active'))loadAdmin()},0)})}
+async function init(){if(!db){setStoreUI();renderSchedule();renderPayments();$('formHint').textContent='Backend belum dikonfigurasi. Lihat README dan file Supabase.';return}await checkAdmin();await loadPublic();/* awal selalu beranda; admin buka manual via menu */db.channel('rulzz-public').on('postgres_changes',{event:'*',schema:'public',table:'site_settings'},loadPublic).on('postgres_changes',{event:'*',schema:'public',table:'ba_schedules'},loadPublic).subscribe();if(isAdmin){subscribeAdminOrders();db.channel('rulzz-audit-live').on('postgres_changes',{event:'INSERT',schema:'public',table:'admin_audit_logs'},()=>{if(!$('tab-audit').classList.contains('hidden'))loadAudit()}).subscribe();db.channel('rulzz-admin').on('postgres_changes',{event:'*',schema:'public',table:'orders'},()=>{if(!$('tab-orders').classList.contains('hidden'))loadOrders()}).subscribe()}}
+init();
+</script></body></html>
